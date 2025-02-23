@@ -1,0 +1,245 @@
+/* You can add global styles to this file, and also import other style files */
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.header {
+  background-color: #000;
+}
+
+body {
+  margin: 0;
+}
+
+.header_title {
+  color: #ffffff;
+}
+
+.flex_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login_btn {
+  padding: 8px;
+  width: 120px;
+  background-color: blue;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.blog_grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 50px;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.blog_box {
+  box-shadow: 0px 0px 2px 1px #00000059;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.09s ease all;
+}
+
+.blog_box:hover {
+  transform: translateY(-5px);
+}
+
+.blog_title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 0;
+}
+
+.blog_desc {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.dashboard_container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "footer footer";
+  grid-template-columns: 1fr 8fr;
+}
+
+.dashboard_container > div.dashboard_header {
+  grid-area: header;
+  border-bottom: 1px solid #d7d7d7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  /* box-shadow: 0px 0px 1px 2px #d7d7d7; */
+}
+.dashboard_container > div.dashboard_menu {
+  grid-area: menu;
+  /* border: 1px solid #000; */
+  min-height: 80vh;
+
+  text-align: center;
+  /* box-shadow: 0px 0px 1px 2px #d7d7d7; */
+  border-right: 1px solid #d7d7d7;
+}
+.dashboard_container > div.dashboard_content {
+  grid-area: content;
+
+}
+
+.profile_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dashboard_menu > a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.dashboard_content_add-blog {
+  padding: 10px;
+}
+
+.add_blog_title {
+  text-align: start;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.logo {
+  width: 140px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500px;
+}
+
+.title_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.author_name {
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.read_btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 550;
+}
+.read_btn:hover {
+  color: blue;
+}
+
+.time {
+  font-size: 14px;
+}
+
+.input_blog {
+  padding: 16px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.blog_description {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.input_blog,
+.blog_description::placeholder {
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px black;
+  box-shadow: 0px 4px 10px rgba(216, 38, 38, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid black ;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+button[type="submit"] {
+  background: #ff5f6d;
+  color: white;
+}
+
+
+.facebook-btn {
+  background: #3b5998;
+  color: white;
+}
+
+.Google-btn {
+  background: #db4a39;
+  color: white;
+}
+
+
+.facebook-btn:hover {
+  background: #2d4373;
+}
+
+.Google-btn:hover {
+  background: #c23321;
+}
+
+
+p {
+  font-size: 14px;
+  color: #555;
+}
