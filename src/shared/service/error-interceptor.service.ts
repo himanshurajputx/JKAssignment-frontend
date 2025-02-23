@@ -2,14 +2,14 @@ import { Injectable, Injector } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import {AlertService} from '../alert';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorInterceptorService implements HttpInterceptor {
   constructor(private _injector: Injector,
-              private alertService: AlertService) {}
+              private toastr: ToastrService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
@@ -19,7 +19,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
         (error: HttpErrorResponse) => {
           console.error('error in http',error.message);
 
-          this.alertService.error(error.message || 'An API error occurred', 'error');
+          this.toastr.error(error.message || 'An API error occurred', 'error');
 
           return of(error);
         }
@@ -28,7 +28,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
       catchError(error => {
         console.error('error in catchError',error.message);
 
-        this.alertService.error(error.message || 'An API error occurred', 'error');
+        this.toastr.error(error.message || 'An API error occurred', 'error');
 
         return of(error);
       }),

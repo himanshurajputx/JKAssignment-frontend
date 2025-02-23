@@ -16,7 +16,7 @@ import {
 } from '@abacritt/angularx-social-login';
 import {ErrorInterceptorService} from '../../service/error-interceptor.service';
 import {ErrorHandlerService} from '../../service/error-handler.service';
-import {AlertModule} from '../../alert';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   {
@@ -47,7 +47,12 @@ const routes: Routes = [
     ReactiveFormsModule,
     AuthenticationComponent,
     SocialLoginModule,
-    AlertModule
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+
   ],
   providers: [
     {

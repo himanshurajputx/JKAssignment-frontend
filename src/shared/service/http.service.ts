@@ -18,7 +18,7 @@ export class HttpService {
   }
 
   post(url?: any, data?: any, options?: any):Observable<any> {
-    return  this.http.post(`${baseUrl}/${url}`, data, options)
+    return  this.http.post(`${baseUrl}/${url}`, data, options).pipe(map(res => res))
   }
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);

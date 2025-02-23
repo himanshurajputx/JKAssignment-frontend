@@ -31,7 +31,8 @@ export class AuthenticationComponent {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
       console.log('User Info:', user);
       this.http.post('http://localhost:3000/auth/google/callback', { token: user.idToken }).subscribe(response => {
-              localStorage.setItem('access_token', response['access_token']);
+        console.log("response===>", response)
+              // localStorage.setItem('access_token', response['access_token']);
             });
     }).catch(error => {
       console.error('Google Sign-In Error:', error);
@@ -99,9 +100,13 @@ export class AuthenticationComponent {
     let loginData =JSON.stringify(this.loginForm.value, null, 2)
     console.log(JSON.stringify(this.loginForm.value, null, 2));
 
-    this.http.post('authentication/login', loginData).subscribe(res =>{
+    this.http.post('authentication/login', loginData).subscribe(
+      res =>{
       console.log("Res=>>>>>>", res)
-    })
+    },
+      err => {
+        console.log("Error======>", err)
+      })
   }
 
   onReset(): void {
