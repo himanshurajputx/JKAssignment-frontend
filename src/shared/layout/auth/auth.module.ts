@@ -5,8 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthComponent} from './auth.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationComponent} from '../../../app/authentication/authentication.component';
-import {HttpService} from '../../service/http.service';
-import {BrowserModule} from '@angular/platform-browser';
+import {ApiService} from '../../service/api.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -14,9 +13,10 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from '@abacritt/angularx-social-login';
-import {ErrorInterceptorService} from '../../service/error-interceptor.service';
-import {ErrorHandlerService} from '../../service/error-handler.service';
 import { ToastrModule } from 'ngx-toastr';
+import {HttpServices} from '../../service/http';
+import {ErrorInterceptorService} from '../../service/interceptor/error.interceptor';
+import {LoaderInterceptor} from '../../service/interceptor/loader.interceptor';
 
 const routes: Routes = [
   {
@@ -52,7 +52,6 @@ const routes: Routes = [
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
-
   ],
   providers: [
     {
@@ -67,26 +66,28 @@ const routes: Routes = [
               '209876101638-vrll444she6dn00i7joiq93nt36pc44h.apps.googleusercontent.com'
             )
           },
-          // {
-          //   id: FacebookLoginProvider.PROVIDER_ID,
-          //   provider: new FacebookLoginProvider('clientId')
-          // }
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
         ],
         onError: (err) => {
           console.error(err);
         }
       } as SocialAuthServiceConfig,
     },
-    HttpService,
+    ApiService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
       multi: true
     },
     {
-      provide: ErrorHandler,
-      useClass: ErrorHandlerService
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
     },
+    HttpServices
   ],
 })
 export class AuthModule { }

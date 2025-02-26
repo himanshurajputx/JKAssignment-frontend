@@ -1,5 +1,4 @@
-
-
+<loading></loading>
 
 <div class="register-form" *ngIf="login">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
@@ -8,6 +7,7 @@
         <input
           type="text"
           formControlName="email"
+          lowercase
           class="form-control"
           [ngClass]="{ 'is-invalid': loginSubmitted && l['email'].errors }"
         />

@@ -1,0 +1,44 @@
+<loading></loading>
+
+<div>
+  <div class="header">
+    <div class="container">
+      <div class="flex_div">
+        <div>
+          <h2 class="header_title">Blog</h2>
+        </div>
+        <div >
+          <a routerLink="auth/login" *ngIf="!isLoggedIn">
+            <button class="login_btn">Login</button>
+          </a>
+          <a routerLink="auth/login" *ngIf="isLoggedIn" (click)="logout()">
+            <button class="login_btn">Logout</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="blog_grid" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="2"
+                                [infiniteScrollThrottle]="300" (scrolled)="loadBlogs()">
+
+      <div class="blog_box" *ngFor="let item of blogs; index as i">
+        <h4 class="blog_title">{{item.blogTitle | titlecase}}</h4>
+        <p class="blog_desc">{{item.blogDescription.slice(0,200)}}</p>
+        <div class="title_box" style="margin-top: 20px">
+          <div>
+            <button class="read_btn" [routerLink]="['/blogs/details', item.blogId]">Read More</button>
+          </div>
+          <p>{{item.createdAt | date}}</p>
+          <p>{{item.author.name | titlecase}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div #scrollTrigger class="loader" *ngIf="loading">Loading more blogs...</div>
+
+  </div>
+</div>
+

@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+
 .container {
   max-width: 90%;
   margin: auto;
@@ -243,3 +259,77 @@ p {
   font-size: 14px;
   color: #555;
 }
+
+
+
+#spinner {
+  -webkit-animation: frames 1s infinite linear;
+  animation: frames 1s infinite linear;
+  background: transparent;
+  border: 1.75vw solid #FFF;
+  border-radius: 100%;
+  border-top-color: #db4a39;
+  width: 20vw;
+  height: 20vw;
+  opacity: .6;
+  padding: 0;
+  position: absolute;
+  z-index: 999;
+}
+@keyframes frames {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+#pause {
+  display: block;
+  background:
+    rgba(0, 0, 0, 0.66)
+    no-repeat
+    0 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.fancybox-loading {
+  -webkit-animation: a .8s infinite linear;
+  animation: a 1s infinite linear;
+  background: transparent;
+  border: 8px solid rgba(99, 99, 99, 0.5);
+  border-radius: 100%;
+  border-top-color: #fff;
+  height: 5rem;
+  width: 5rem;
+  left: 50%;
+  margin: -30px 0 0 -30px;
+  opacity: .5;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  z-index: 99999;
+}
+@keyframes a {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
